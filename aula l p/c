@@ -1,0 +1,10 @@
+1.|p|=1
+2.|~A|=1+|A|
+3.|A . B|=
+
+satisfasivel=existe pelo menos um valor v(A)=1
+insatisvasivel=todos os V(A)=0
+valida=quando todos os  v(A)=1
+falsicavel=se um pelo menos um valor v(A)=0
+
+                                          
