@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+typedef struct{
+   float x;
+   float y;
+   float z;
+}objeto;
+
+objeto soma(objeto a1, objeto a2){
+    objeto result;
+    result.x=a1.x+a2.x;
+    result.y=a1.y+a2.y;
+    result.z=a1.z+a2.z;
+
+    return result;
+}
+
+void imprimir(objeto a3){
+    printf("%f\n",a3.x);
+    printf("%f\n",a3.y);
+    printf("%f\n",a3.z);
+}
+
+int main() {
+     objeto a;
+     objeto b;
+
+     a.x=2;
+     a.y=3;
+     a.z=4;
+     imprimir(a);
+     b.x=3;
+     b.y=7;
+     b.z=9;
+     imprimir(b);
+     objeto objf=soma(a,b);
+      imprimir(objf);
+    return 0;
+}
