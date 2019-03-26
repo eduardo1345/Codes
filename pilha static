@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAXTAM 100
+
+typedef struct {
+    int key;
+} Item;
+
+typedef struct {
+    Item array[MAXTAM];
+    int topo;
+} StaticStack;
+
+void init(StaticStack *pilha){
+    pilha->topo=0;
+}
+
+int isEmpty(StaticStack *pilha){
+    return(pilha->array==MAXTAM);
+}
+
+int isFull(StaticStack *pilha) {
+    return(pilha ->array==0);  
+}
+
+void push(Item item, StaticStack *pilha){
+        pilha->topo = pilha->topo + 1;
+        item = pilha->array[pilha->topo];
+}
+
+void pop(StaticStack *pilha, Item *item){
+        item = pilha->array[pilha->topo - 1];
+        pilha->topo = pilha->topo - 1;
+}
+
+int size(StaticStack *pilha){
+    return pilha->topo;
+}
+
+Item top(StaticStack *pilha){
+    return pilha->array[pilha->topo-1];
+}
+
+void print(StaticStack *pilha){
+    for (int i= 0;i<pilha->topo; ++i) {
+        printf("%i /n",pilha->array[i].key);
+    }
+}
+
+int main() {
+    staticstack x ;
+    int e;
+    e.key=55;
+
+    init(&x);
+    isEmpty(&x);
+    isFull(&x);
+    push(&x);
+    pop(&x);
+    size(&x);
+    top(&x);
+    print(&x){
+        
+    }
+    return 0;
+}
