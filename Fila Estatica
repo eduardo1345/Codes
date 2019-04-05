@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAXTAM  5
+
+typedef struct {
+    int chave;
+    /* outros componentes */
+} Item;
+
+typedef struct {
+    Item array[MAXTAM];
+    int tamanho;
+    int inicio;
+    int fim;
+} FilaEstatica;
+
+void iniciaFila(FilaEstatica *fila){
+    fila->inicio=0;
+    fila->fim=-1;
+    fila->tamanho=0;
+}
+int estaVazia(FilaEstatica *fila){
+    return(fila->tamanho=0);
+}
+int estaCheia(FilaEstatica *fila){
+    return(fila->tamanho == MAXTAM);
+}
+int tamanhoFila(FilaEstatica *fila);
+int incrementaIndice(int i);
+void enfileira(Item x, FilaEstatica *fila){
+    if(estaCheia(fila) == 0){
+        fila->fim=incrementaIndice(fila->fim);
+        fila->array[fila->fim]=x;
+        fila->tamanho++;
+    }
+}
+Item desenfileira(FilaEstatica *fila){
+    if(estaVazia(fila) == 0){
+        Item aux;
+        aux = fila->array[fila->inicio];
+        fila->inicio=incrementaIndice(fila->inicio);
+        fila->tamanho=fila->tamanho-1;
+        return(aux);
+    }
+}
+void imprimeFila(FilaEstatica *fila);
+Item inicioFila(FilaEstatica *fila){
+    Item aux=fila->inicio;
+}
+Item fimFila(FilaEstatica *fila){
+    Item aux=fila->fim
+}
+
+
+    int main(){
+        return 0 ;
+    }
