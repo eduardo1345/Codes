@@ -1,0 +1,32 @@
+# Nome:Eduardo Pereira da Trindade          Matricula:
+
+####################################
+#Primeira lista de exercicios no R #
+####################################
+# Prof Thiago G. Ramires
+#Obs: Copie tudo e cole no R Studio. Apos, apresente aqui os codigos utilizados. 
+# Para exportar os gráficos e add no documento, clique em export 
+#e escolha o formato de sua preferência.
+
+# 1)Durante um mes uma industria anotou o numero de falhas diárias de 
+#     determinada máquina.  As amostras obtidas foram:
+x=c(4,1,2,2,0,2,1,2,0,2,3,1,2,2,1,2,0,
+    2,2,1,2,2,2,4,2,2,1,1,1,2)
+
+# a) Construa um grafico de coluna para a seguinte tabela,
+# adicionando os nomes nos eixos X e Y, alterando cores e título.
+barplot(table(x),col=c(2:6),xlab='Numaro de falhas',ylab='quantidade')
+
+# b)Construa um grafico de pizza para a mesma tabela
+pie(table(x),col=c(2:6))
+
+#2) Considere os n=180 tempos de falha de determinado 
+#   equipamento. 
+(x=rnorm(180,60,10))
+
+# a) Apresente um histograma para a variável x  
+hist(x,col=c(2:9))
+# b) Sabendo que a média amostral da variável x foi 
+mean(x)
+abline(v=mean(x),lty=2,col=1)
+#    apresente no gráfico uma linha vertical com esse valor.
