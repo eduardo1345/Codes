@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int chave;
+}Item;
+typedef struct NoLista *ponteiro;
+
+typedef struct NoLista {
+   Item elemento;
+   ponteiro prox;
+}NoLista;
+
+typedef struct {
+    ponteiro inicio;
+    int tamanho;
+}Lista;
+
+void inicia(Lista *lista){
+    lista->inicio=NULL;
+    lista->tamanho=0;
+}
+void iserir(Lista *lista, int x){
+    ponteiro aux;
+    aux=malloc(sizeof(NoLista));
+    aux->elemento.chave= x;
+    if(lista->inicio == NULL || x < lista->inicio->elemento.chave) {
+        for (int i = 0; i; i++) {
+
+        }
+    }
+}
+void imprimir(Lista *lista){
+
+}
+void destroyLIST(Lista *lista){
+
+}
+int search(Lista *lista){
+
+}
+
+int main() {
+
+    return 0;
+}
