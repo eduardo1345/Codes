@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -53,7 +54,3 @@ int main(pilhaDinamica *pilha){
     printf("pilha:%i",pilha->topo);
     return 0;
 }
-    return(pilha->tamanho);
-}
-void topo(pilhaDinamica *pilha, Item *item);
-void imprimePilha(pilhaDinamica *pilha);
