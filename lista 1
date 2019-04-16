@@ -7,8 +7,8 @@ typedef struct {
 typedef struct NoLista *ponteiro;
 
 typedef struct NoLista {
-   Item elemento;
-   ponteiro prox;
+    Item elemento;
+    ponteiro prox;
 }NoLista;
 
 typedef struct {
@@ -23,23 +23,39 @@ void inicia(Lista *lista){
 void iserir(Lista *lista, int x){
     ponteiro aux;
     aux=malloc(sizeof(NoLista));
+    ponteiro novo;
+    novo=malloc(sizeof(NoLista));
     aux->elemento.chave= x;
     if(lista->inicio == NULL || x < lista->inicio->elemento.chave) {
-        for (int i = 0; i; i++) {
-
+        aux->prox=lista->inicio;
+        lista->inicio=NULL;
         }
+    else{
+        novo=lista->inicio;
     }
-}
-void imprimir(Lista *lista){
+    while(novo->prox != NULL & x > novo->prox.chave){
+        novo=novo->prox;
+        aux->prox=novo->prox;
+        novo->prox=aux;
+        ++;
+    }
+    }
 
-}
 void destroyLIST(Lista *lista){
 
 }
-int search(Lista *lista){
-
+int search(Lista *lista,int x){
+    ponteiro aux;
+    for(aux= lista->inicio;aux != NULL;aux++){
+        if(aux->x == x){
+            return 1;
+        }
+    }
 }
 
+void imprimir(Lista *lista){
+
+}
 int main() {
 
     return 0;
