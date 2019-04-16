@@ -43,3 +43,17 @@ int tamanhoPilha(pilhaDinamica *pilha){
 }
 void topo(pilhaDinamica *pilha, Item *item);
 void imprimePilha(pilhaDinamica *pilha);
+
+int main(pilhaDinamica *pilha){
+    NoPilha x;
+    Item clip;
+    empilha(clip,&x);
+
+    scanf("%i",&clip);
+    printf("pilha:%i",pilha->topo);
+    return 0;
+}
+    return(pilha->tamanho);
+}
+void topo(pilhaDinamica *pilha, Item *item);
+void imprimePilha(pilhaDinamica *pilha);
