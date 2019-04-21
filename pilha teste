@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int chave;
+    /* outros componentes */
+} Item;
+
+typedef struct NoPilha *Ponteiro;
+
+typedef struct NoPilha{
+    Item item;
+    Ponteiro proximo;
+} NoPilha;
+
+typedef struct {
+    Ponteiro topo;
+    int tamanho;
+} pilhaDinamica;
+
+
+void iniciaPilha(pilhaDinamica *pilha){
+    pilha->topo=NULL;
+    pilha->tamanho=0;
+}
+int estaVazia(pilhaDinamica *pilha){
+    return(pilha->tamanho == 0);
+}
+void empilha(int item, pilhaDinamica *pilha) {
+    Ponteiro aux= (NoPilha*)malloc(sizeof(NoPilha));
+    aux->item.chave=item;
+	if(estaVazia){
+   	    pilha->topo=aux;
+	    pilha->tamanho++;
+ 		aux->proximo=NULL;
+	}
+	else{
+		pilha->tamanho++;
+		aux->proximo=pilha->topo;
+		pilha->topo=aux;			
+	}
+}
+void desempilha(pilhaDinamica *pilha, int *item){
+    Ponteiro aux=NULL;
+    malloc(sizeof(NoPilha));
+    
+}
+int tamanhoPilha(pilhaDinamica *pilha){
+    return(pilha->tamanho);
+}
+void topo(pilhaDinamica *pilha, int *item);
+
+void imprimePilha(pilhaDinamica *pilha){
+	Ponteiro novo=pilha->topo;
+	while(novo != NULL){
+		printf("%d->",novo->item.chave);
+		novo=novo->proximo;
+	}
+}
+
+int main(){
+	pilhaDinamica p;
+	
+	iniciaPilha(&p);
+	empilha(3,&p);
+	empilha(33,&p);
+
+	imprimePilha(&p);
+	
+	return 0;
+}
