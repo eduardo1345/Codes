@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct{
+    int chave;
+} Item;
+
+typedef struct NoArvore *Ponteiro;
+
+typedef struct NoArvore {
+    Item elemento;
+    Ponteiro esquerda;
+    Ponteiro direita;
+} NoArvore;
+
+void iniciaArvore(Ponteiro *tree){
+    *tree=NULL;
+}
+void destroiArvore(Ponteiro *tree);
+void percursoPreOrdem(Ponteiro *tree);
+void percursoPosOrdem(Ponteiro *tree);
+void percursoEmOrdem(Ponteiro *tree);
+bool insereItem(Ponteiro *tree, Item x){
+    Ponteiro *aux= malloc(sizeof(NoArvore));
+        if(estaVazia(tree)){
+            tree->aux;
+            tree->direita = tree->esquerda=NULL;
+            tree->elemento= x;
+            return (true);
+        }
+}
+bool procuraItem(Ponteiro *tree, int key, Item *ret);
+bool estaVazia(Ponteiro *tree){
+    return(*tree	==	NULL);
+}
+bool removeItem(Ponteiro *tree, int key, Item *ret);
+Ponteiro maiorElemento(Ponteiro *tree);
+Ponteiro menorElement(Ponteiro *tree);
+
+int main(){
+    return  0;
+}
