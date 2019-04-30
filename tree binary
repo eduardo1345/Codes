@@ -21,23 +21,31 @@ void destroiArvore(Ponteiro *tree);
 void percursoPreOrdem(Ponteiro *tree);
 void percursoPosOrdem(Ponteiro *tree);
 void percursoEmOrdem(Ponteiro *tree);
-bool insereItem(Ponteiro *tree, Item x){
-    Ponteiro *aux= malloc(sizeof(NoArvore));
-        if(estaVazia(tree)){
-            tree->aux;
-            tree->direita = tree->esquerda=NULL;
-            tree->elemento= x;
-            return (true);
-        }
-}
-bool procuraItem(Ponteiro *tree, int key, Item *ret);
+
 bool estaVazia(Ponteiro *tree){
     return(*tree	==	NULL);
 }
+
+bool insereItem(Ponteiro *tree, Item x){
+    Ponteiro *aux= malloc(sizeof(NoArvore));
+    if(estaVazia(tree)){
+        tree->aux;
+        tree->direita = tree->esquerda=NULL;
+        tree->elemento= x;
+        return (true);
+    }
+}
+bool procuraItem(Ponteiro *tree, int key, Item *ret);
+
 bool removeItem(Ponteiro *tree, int key, Item *ret);
 Ponteiro maiorElemento(Ponteiro *tree);
 Ponteiro menorElement(Ponteiro *tree);
-
+Item em_ordem(Ponteiro *tree){
+    tree->esquerda;
+    printf("");
+    tree->direita;
+    return(em_ordem);
+}
 int main(){
     return  0;
 }
