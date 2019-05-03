@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int *v;
+int i, num;
+
+int media(){
+        int soma = 0;
+        int media;
+
+// calcula soma e mostra soma
+        for ( i = 0; i < num; i++ )
+            soma += v[i];
+        printf ( "\nSoma total: %d\n", soma );
+// calcula e mostra media
+        media = soma / num;
+        printf ( "\nMedia dos valores: %d\n", media );
+        
+        return 0;
+    }
+
+
+int main(void){
+
+    printf("Informe o numero de componentes do vetor\n");
+    scanf("%d", &num);
+
+
+    v = (int *) malloc(num * sizeof(int));
+
+
+    for (i = 0; i < num; i++)
+    {
+        printf("\nDigite o valor para a posicao %d do vetor: ", i+1);
+        scanf("%i",&v[i]);
+    }
+
+
+    printf("\n --------------Valores do vetor dinamico-------------- \n\n");
+
+    for (i = 0;i < num; i++)
+    {
+        printf("%i \n",v[i]);
+    }
+    media();
+
+    free(v);
+
+    return 0;
