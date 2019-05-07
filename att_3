@@ -15,7 +15,20 @@ typedef struct nozin{
     Ponteiro direita;
 }nozin;
 
-bool lerArq(){
+int arq1() {
+    FILE *pont_arq;
+
+    pont_arq = fopen("arquivo.txt", "a");
+
+    fclose(pont_arq);
+
+    printf("O arquivo foi criado com sucesso!");
+
+    system("pause");
+    return (0);
+}
+
+/*bool lerArq(){
     FILE *arq;
 
     arq=fopen("entrada.txt","r");
@@ -29,10 +42,11 @@ bool lerArq(){
 
     return true;
 }
-//      imprime saida
-//procuro na arvore
-// arq texto saida
 
+imprime saida
+     procuro na arvore
+     arq texto saida
+*/
 bool inicia_arvore(Ponteiro *arvore) {
     (*arvore) = NULL;
 }
@@ -69,7 +83,6 @@ void Pre_ordem(Ponteiro *arvore){
     printf("%d\n", ((*arvore)->elemento.chave));
     Pre_ordem(&(*arvore)->esquerda);
     Pre_ordem(&(*arvore)->direita);
-
 }
 
 void Pos_ordem(Ponteiro *arvore){
@@ -127,13 +140,13 @@ bool procura(Ponteiro *arvore, int elemento, item *porra){
         return remocao((*arvore)->direita);
     }
     else{
-        return remocao((*arvore)->esquerda) ;
+        return remocao((*arvore)->esquerda);
     }
 */
 
 int main() {
 
-    lerArq();
+    //lerArq();
     Ponteiro raiz;
     item X;
     inicia_arvore(&raiz);
