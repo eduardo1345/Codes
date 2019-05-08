@@ -1,0 +1,22 @@
+
+Lista(H,B,[H|B]).
+
+cont([],R):-R is 0.
+cont([H|[]],R):-R is 1.
+cont([H|B],R):-count(B,R1),R is 1+R1.
+
+conc([],L2,R):-R=L2.
+conc(L1,[],R):-R=L1.
+conc([H|L1],L2,[H|L3]):-conc(L1,L2,L3).
+
+pert(X,L):-conc(_,[X|_],L).
+
+
+sucant(X,L,A,S):-count(-,[A,X,S|_],L).
+
+listsucant(X,L,A,S):-(A,[X|S],L).
+
+excluir(X,L,R):-conc(A,[X|S],L),conc(A,S,R).
+
+inverter([],[]).
+inverter([H|B],R):-inverter(B,L3),conc(H,L3,R).
