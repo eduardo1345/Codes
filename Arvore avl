@@ -54,7 +54,16 @@ int alturaArvoreAVL(PointeiroArvoreAVL *node){
     }
     return (*node)->altura;
 }
-int atualizaAlturaArvoreAVL(PointeiroArvoreAVL esquerda, PointeiroArvoreAVL direita);
+int atualizaAlturaArvoreAVL(PointeiroArvoreAVL *node){
+    int ae , ad;
+    ae=alturaArvoreAVL(&(*node)->esquerda);
+    ad=alturaArvoreAVL(&(*node)->direita);
+
+    if(ad-ae == 2 && ad-ae==-2){
+        aplicarRotacoes();
+    }
+    return  true;
+}
 bool pesquisaArvoreAVL(PointeiroArvoreAVL *node, int elemento, item *porra){
         if((*node)== NULL){
             return false;
@@ -70,24 +79,62 @@ bool pesquisaArvoreAVL(PointeiroArvoreAVL *node, int elemento, item *porra){
             return pesquisaArvoreAVL(&(*node)->direita, elemento, porra);
     }
 }
-void destruirArvoreAVL(PointeiroArvoreAVL *node);
-
-void aplicarRotacoes(PointeiroArvoreAVL *node);
-
+void rotacaoSimplesDireita(PointeiroArvoreAVL *node){
+    PointeiroArvoreAVL u;
+    u=(*node)->esquerda;
+    (*node)->esquerda=u->direita;
+    u->direita=(*node);
+    (*node)->altura=0;
+    v=u;
+}
 void rotacaoSimplesEsquerda(PointeiroArvoreAVL *node){
     PointeiroArvoreAVL u;
     u=(*node)->direita;
     (*node)->direita=u->esquerda;
     u->esquerda=(*node);
+    (*node)->altura=0;
+    (*node)=u;
 }
-void rotacaoSimplesDireita(PointeiroArvoreAVL *node){
 
-}
 void rotacaoDuplaEsquerda(PointeiroArvoreAVL *node){
-
+    PointeiroArvoreAVL u,v,p;
+    u=(*node)->direita;
+    v=u->esquerda;
+    (*node)->direita=v->esquerda;
+    u->esquerda=v->direita;
+    v->direita=u;
+    v->esquerda=(*node);
+    (*node)=v;
 }
 void rotacaoDuplaDireita(PointeiroArvoreAVL *node){
-
+    PointeiroArvoreAVL u,v;
+    u=(*node)->esquerda;
+    v=u->direita;
+    u->direita;=v->esquerda;
+    v->esquerda=u;
+    (*node)->esquerda=v->direita;
+    v->direita=(*node);
+    (*node)=v;
+}
+void aplicarRotacoes(PointeiroArvoreAVL *node) {
+    PointeiroArvoreAVL u;
+    int he,hd;
+    if(he > hd){
+        rotacaoSimplesDireita(node);
+        rotacaoDuplaDireita(node);
+    }
+    if(he(u)>hd(u)){
+        rotacaoSimplesDireita(node);
+    }
+    else{
+        rotacaoDuplaDireita(node);
+    }
+    if(he(u) > hd(u)){
+        rotacaoSimplesEsquerda(node);
+    }
+    else{
+        rotacaoDuplaEsquerda(node);
+    }
 }
 
 bool inserirArvoreAVL(PointeiroArvoreAVL *node, item x){
@@ -115,7 +162,7 @@ bool inserirArvoreAVL(PointeiroArvoreAVL *node, item x){
         aplicarRotacoes((*node));
     }
 }
-
+void destruirArvoreAVL(PointeiroArvoreAVL *node);
 void imprimeArvoreAVLNivel(PointeiroArvoreAVL *node);
 
 
