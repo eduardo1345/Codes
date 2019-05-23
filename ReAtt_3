@@ -17,13 +17,23 @@ typedef struct nozin{
 bool iniciar(Ponteiro *tree){
     (*tree)=NULL;
 }
-ArqEntrada(){
-    FILE arq=fopen("entrada.txt","r");
-    
+void ArqEntrada(){
+    FILE *arq=fopen("entrada.txt","r");
+    char c[100];
+    int n=0;
+
+    if(arq != NULL){
+        while((c=fgets(arq,'sizeof c, stdin)) != EOF){
+            if(c =='cafe' || c == 'batata' )n++;
+        }
+    }
+
     fclose(arq);
+    printf("existe %d As\n",n);
 }
 
 int main(){
-    
+
+    ArqEntrada();
     return 0;
 }
