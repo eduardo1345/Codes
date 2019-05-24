@@ -11,9 +11,12 @@
 //Possibilitar a edição de um cadastro(referenciado pela posição);
 //Indicar em umn campo da stuct, a data em que o cadastro foi feito e tambem editado pela ultima vez;
 //tambem editado pela ultima vez data e hora usando <time.h>;
-//
-//
-
+//-nome
+//-raça
+//-se tem pedigri ou não
+//quantidade patas
+//criado em:tempo,preenchido automaticamente
+//atualizado em:-tempo,preenchido automaticamente 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
