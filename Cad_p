@@ -4,7 +4,15 @@
 // Ao deletar um cadastro, mover os cadastros posteriores para trás;
 // Exemplo: | 1 | 2 | 3 | 4 |, deletou o cadastro 2, não deve ficar:
 // | 1 | vazio | 3 | 4 |, mas sim se tornar | 1 | 2 | 3 |;
-// Permitir busca por nomes no cadastro;
+// Permitir busca por nomes no cadastro; strncmp
+
+//Fazer um progama que aloque dinamicamente a quantidade de cachorros de um canil;
+//conforme o usuario for inserido;
+//Possibilitar a edição de um cadastro(referenciado pela posição);
+//Indicar em umn campo da stuct, a data em que o cadastro foi feito e tambem editado pela ultima vez;
+//tambem editado pela ultima vez data e hora usando <time.h>;
+//
+//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -58,6 +66,14 @@ cad * deleteItem(int qtd, int item, cad*full) {
     }
     return full;
 }
+void pesquisar(int qtd,char *nome,cad *full){
+    for(int i=0;i<qtd;i++){
+        if(strncmp(nome,full[i].nome,strlen(nome))== 0) {
+            printf("(%d,%s)", full[i].index, full[i].nome);
+        }
+    }
+    printf("\n");
+}
 
 void main() {
 
@@ -66,12 +82,14 @@ void main() {
     int posicao;
     cad *cadastroTotal = NULL;
     cad temp;
+    char nome[30];
 
     while(opcao!=0) {
         printf("Digite a opcao desejada \n");
         printf("1 - Inserir\n");
         printf("2 - Listar\n");
         printf("3 - Deletar\n");
+        printf("4 - Pesquisar\n");
         printf("0 - Sair \n");
         scanf("%i", &opcao);
         limpar();
@@ -94,7 +112,11 @@ void main() {
                 cadastroTotal = deleteItem(qtd, posicao, cadastroTotal);
                 qtd--;
                 break;
-            case 0:
+            case 4:
+                printf("Digite o nome da pessoa que quer buscar: \n");
+                fgets(nome, sizeof(nome),stdin);
+                nome[strcmp(nome,"\n")]='\0';
+                pesquisar(qtd,nome,cadastroTotal);
                 break;
             default:
                 break;
