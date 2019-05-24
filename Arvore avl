@@ -29,9 +29,9 @@ bool estaVaziaArvoreAVL(PointeiroArvoreAVL *node){
 }
 void Pre_ordem(PointeiroArvoreAVL *node){
     if((*node) == NULL)return;
-        printf("%d\n", ((*node)->elemento.chave));
-        Pre_ordem(&(*node)->esquerda);
-        Pre_ordem(&(*node)->direita);
+    printf("%d\n", ((*node)->elemento.chave));
+    Pre_ordem(&(*node)->esquerda);
+    Pre_ordem(&(*node)->direita);
 
 }
 
@@ -65,18 +65,18 @@ int atualizaAlturaArvoreAVL(PointeiroArvoreAVL *node){
     return  true;
 }
 bool pesquisaArvoreAVL(PointeiroArvoreAVL *node, int elemento, item *porra){
-        if((*node)== NULL){
-            return false;
-        }
-        if((*node)->elemento.chave == elemento){
-            *porra= (*node)->elemento;
-            return true;
-        }
-        if((*node)->elemento.chave >elemento){
-            return pesquisaArvoreAVL(&(*node)->esquerda, elemento, porra);
-        }
-        else{
-            return pesquisaArvoreAVL(&(*node)->direita, elemento, porra);
+    if((*node)== NULL){
+        return false;
+    }
+    if((*node)->elemento.chave == elemento){
+        *porra= (*node)->elemento;
+        return true;
+    }
+    if((*node)->elemento.chave >elemento){
+        return pesquisaArvoreAVL(&(*node)->esquerda, elemento, porra);
+    }
+    else{
+        return pesquisaArvoreAVL(&(*node)->direita, elemento, porra);
     }
 }
 void rotacaoSimplesDireita(PointeiroArvoreAVL *node){
@@ -85,7 +85,7 @@ void rotacaoSimplesDireita(PointeiroArvoreAVL *node){
     (*node)->esquerda=u->direita;
     u->direita=(*node);
     (*node)->altura=0;
-    v=u;
+    (*node)=u;
 }
 void rotacaoSimplesEsquerda(PointeiroArvoreAVL *node){
     PointeiroArvoreAVL u;
@@ -110,12 +110,13 @@ void rotacaoDuplaDireita(PointeiroArvoreAVL *node){
     PointeiroArvoreAVL u,v;
     u=(*node)->esquerda;
     v=u->direita;
-    u->direita;=v->esquerda;
+    u->direita=v->esquerda;
     v->esquerda=u;
     (*node)->esquerda=v->direita;
     v->direita=(*node);
     (*node)=v;
 }
+/*
 void aplicarRotacoes(PointeiroArvoreAVL *node) {
     PointeiroArvoreAVL u;
     int he,hd;
@@ -136,10 +137,10 @@ void aplicarRotacoes(PointeiroArvoreAVL *node) {
         rotacaoDuplaEsquerda(node);
     }
 }
-
-bool inserirArvoreAVL(PointeiroArvoreAVL *node, item x){
+*/
+bool inserirArvoreAVL(PointeiroArvoreAVL *node, item *x){
     if((*node) == NULL){
-        item no=malloc(sizeof(NodeNoArvoreAVLTree));
+        NodeNoArvoreAVLTree *no=(NodeNoArvoreAVLTree*)malloc(sizeof(NodeNoArvoreAVLTree));
         (*node)->direita=NULL;
         (*node)->esquerda=NULL;
         (*node)->altura=0;
@@ -162,11 +163,25 @@ bool inserirArvoreAVL(PointeiroArvoreAVL *node, item x){
         aplicarRotacoes((*node));
     }
 }
-void destruirArvoreAVL(PointeiroArvoreAVL *node);
+/*void destruirArvoreAVL(PointeiroArvoreAVL *node){
+    if((*node == NULL))
+
+        if((*node)->elemento == valor){
+            if((*node)sub arvore esquerda == NULL){
+                (*node)=(*node)->direita;
+            }
+        if(){
+
+        }
+    }
+}
+ */
 void imprimeArvoreAVLNivel(PointeiroArvoreAVL *node);
 
 
 int main(){
+
+    inserirArvoreAVL();
 
     return 0;
 }
