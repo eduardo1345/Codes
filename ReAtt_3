@@ -1,39 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <lista.h>
 
-typedef struct {
-    char chave;
-}item;
+typedef struct node{
+    char *ch;
+    struct node * left;
+    struct node * right;
+}node;
 
-typedef struct NoArvore *Ponteiro;
+void ins(node **root,char *ch){
+	node* n=(node *)malloc(sizeof(node));
+	n->key=i;
+	n->left=NULL;
+	n->right=NULL;
+	if((*root)==NULL){
+		(*root)=n;
+	}else{
+		node *aux=(*root);
+		
+		while(1){
+			if(i<aux->key){
+				if(aux->left==NULL){
+					aux->left=n;
+					break;
+				}else{
+					aux=aux->left;
+				}
 
-typedef struct nozin{
-    item elemento;
-    Ponteiro esquerda;
-    Ponteiro direita;
-}NoArvore;
-
-bool iniciar(Ponteiro *tree){
-    (*tree)=NULL;
+			}
+			if(i>aux->key){
+				if(aux->right==NULL){
+						aux->right=n;
+					break;
+				}else{
+					aux=aux->right;
+				}
+			}			
+		}
+	}
 }
-void ArqEntrada(){
-    FILE *arq=fopen("entrada.txt","r");
-    char c[100];
-    int n=0;
 
-    if(arq != NULL){
-        while((c=fgets(arq,'sizeof c, stdin)) != EOF){
-            if(c =='cafe' || c == 'batata' )n++;
-        }
-    }
-
-    fclose(arq);
-    printf("existe %d As\n",n);
+void emOrdem(node *r){
+	if(r!=NULL){
+		emOrdem(r->left);
+		printf("%d ",r->key);
+		emOrdem(r->right);
+	}
 }
 
 int main(){
+	node *root=NULL;
+	FILE * f=fopen("entrada.txt","r");
 
-    ArqEntrada();
+    fclose(f);
     return 0;
 }
