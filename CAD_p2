@@ -1,0 +1,117 @@
+// Fazer um programa que aloque dinamicamente a quantidade de cadastros
+// conforme o usuário for os inserindo;
+// Possibilitar a exclusão de um cadastro;
+// Ao deletar um cadastro, mover os cadastros posteriores para trás;
+// Exemplo: | 1 | 2 | 3 | 4 |, deletou o cadastro 2, não deve ficar:
+// | 1 | vazio | 3 | 4 |, mas sim se tornar | 1 | 2 | 3 |;
+// Permitir busca por nomes no cadastro;
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct endereco{
+    char rua[90];
+    int numero;
+};
+struct cadastro{
+    char nome[50];
+    int idade;
+    struct endereco end;
+    int index;
+};
+typedef struct cadastro cad;
+
+void limpar(){
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+}
+
+cad * insertCad(int key, cad temp, cad *ptr) {
+    printf("A key eh %i \n", key);
+    if (key == 1){
+        ptr = (cad*) malloc(sizeof(cad));
+    }
+    else {
+        ptr = (cad*) realloc(ptr, key * sizeof(cad));
+    }
+    ptr[key-1]=temp;
+    ptr[key-1].index = key-1;
+    return ptr;
+}
+cad editar(){
+
+}
+void printList(int qtd, cad *full) {
+    for (int i = 0; i < qtd; i++){
+        printf("(%d,%s) ",full[i].index,full[i].nome);
+    }
+    printf("\n");
+}
+
+cad * deleteItem(int qtd, int item, cad*full) {
+    memmove(&full[item],&full[item+1],sizeof(cad)*(qtd-item));
+    full = (cad*) realloc(full, qtd * sizeof(cad));
+
+    for (int i = 0; i < qtd-1; i++){
+        if (i >= item) {
+            full[i].index = full[i].index-1;
+        }
+    }
+    return full;
+}
+
+void main() {
+
+    int opcao = 1;
+    int qtd = 0;
+    int posicao;
+    cad *cadastroTotal = NULL;
+    cad temp;
+
+    while(opcao!=0) {
+        printf("Digite a opcao desejada \n");
+        printf("1 - Inserir\n");
+        printf("2 - Listar\n");
+        printf("3 - Deletar\n");
+        printf("3 - Editar\n");
+        printf("0 - Sair \n");
+        scanf("%i", &opcao);
+        limpar();
+        switch (opcao) {
+            case 1:
+                printf("Digite o nome da pessoa: \n");
+                fgets(temp.nome, sizeof(temp.nome), stdin);
+                temp.nome[strcspn(temp.nome,"\n")]='\0';
+                qtd++;
+                cadastroTotal = insertCad(qtd, temp, cadastroTotal);
+                printList(qtd,cadastroTotal);
+                break;
+            case 2:
+                printList(qtd,cadastroTotal);
+                break;
+            case 3:
+                printf("Digite a posicao a ser apagada: \n");
+                scanf("%i", &posicao);
+                limpar();
+                cadastroTotal = deleteItem(qtd, posicao, cadastroTotal);
+                qtd--;
+                break;
+            case 9:
+                printf("Digite a posição a se r editada:");
+                scanf("%i",&posicao);
+                limpar();
+                if(posicao<qtd){
+                    printf("O cadastro não existe");
+                    break;
+                }
+                printf("3 - DeletarDigite o nome da pessoa\n");
+                fgets(temp.nome, sizeof(temp.nome),stdin);
+                temp.nome[strcspn(temp.nome,'\n')]='\0';
+                cadastroTotal=editar(posicao,temp,cadastroTotal);
+                break;
+            default:
+                break;
+        }
+    }
+}
