@@ -1,57 +1,68 @@
 #include<stdio.h>
 #include<stdlib.h>
+/*
+1) - Pergunte ao usuário o tamanho de um vetor a ser alocado;
+- Aloque dinamicamente este vetor;
+- Preencha este vetor com inteiros (usuário insere valor);
+- Exiba a média do vetor.
+2) - Pergunte ao usuário o tamanho de linhas e de colunas de uma matriz;
+- Aloque dinamicamente essa matriz;
+- Faça o usuário preencher a matriz com inteiros;
+- Calcule o determinante da matriz.
+3) - Pergunte ao usuário quantos cadastros ele deseja inserir;
+- Aloque dinamicamente uma struct com essa quantidade de cadastros contendo: nome; telefone; idade.
+- De acordo com o pedido do usuário, de a opção de editar cada uma das posições pré-alocadas;
+Ou seja, a posição já foi alocada previamente, o usuário só tem a opção de editar os dados nela contidos.
+4) - Faça um programa que aloque dinamicamente duas matrizes;
+- Peça ao usuário para preencher a matriz com valores inteiros;
+- Realize a multiplicação dessas matrizes e armazene em uma terceira, também alocada dinamicamente;
+5) - Faça um programa que aloque, e realoque, conforme o usuário for inserindo, um vetor de números inteiros. O tamanho desse vetor deve crescer, conforme o usuário continuar digitando valores em um certo loop while.
+Ao final, exibir quantos desses valores são maiores do que 52;
+6) - Faça um programa que aloque dinamicamente um vetor de strings (refletir sobre o que é um vetor de strings);
+- O tamanho desse vetor deve ser indagado ao usuário durante a execução do programa, a quantidade de caracteres em cada string é fixa (fica a seu critério).
+- Remover o \n de cada uma das strings.
+- Preencher essas strings com o nome dos convidados do casamento do Leonardo.
 
-/**
-05
-*Criar um vetor com 10 elementos numericos inteiros digitados
-06
-*Calcular a soma destes elementos e exibir o vetor e a soma
-07
-*/
-void alocvet(){
-    int N,tam,soma=0,media=0;
-    
-    printf("Digite o tamanho do vetor a ser alocado:");
-    scanf("%d",&tam);
-    
-    N =(int*)malloc(tam * sizeof(int));
-    
-    for(int i=0;i<tam;i++){
-        scanf("%d",&N);
-        printf("%d foi alocado\n", N);
-    }
-    for(int i=0; i<tam; i++){
+ 
 
-        soma=soma+N[i];
-    }
-}
+1)
+#include <stdio.h>
+#include <stdlib.h>
+
+
 int main(){
-    //declaração das variaveis
+     int i, n;
+     float *v, media, soma;
+     printf("Digite tamanho do vetor:");
+     
+    scanf("%d", &n);
 
-    int tam=10, A[tam], i, soma=0,media;
-
-    //entrada dos valores digitados
-    for(i=0; i<tam; i++){
-
-        printf("Digite o %d. valor: ", i+1);
-        scanf("\n%d", &A[i]);
+    v = (float*) malloc(n*sizeof(float));
+    for (i = 0; i < n; i++) {
+        scanf("%f", &v[i]);
     }
-
-    //calculo da soma
-
-    for(i=0; i<tam; i++){
-
-        soma=soma+A[i];
+    for ( i = 0; i < n ;i++ ) {
+        soma += v[i];
     }
-
-    //saida de dados
-
-    for(i=0; i<tam; i++){
-
-        printf("\nA[%d] = %d", i+1, A[i]);
-
-    }
-    media=soma/A;
-    printf("\n\nSoma: %d\n\n", soma) ;
+    media = soma/n;
+    printf ( "\nSoma total: %.0f\n", soma );
+    printf("Media = %.0f\n", media,soma);
+   
+    free(v);
+    
     return 0;
 }
+
+2)
+ */
+
+int main(){
+      int *v,n ;
+      
+    printf("Digite Linha e coluna:");
+    v = (int*) malloc(n*sizeof(int)); 
+    
+    return 0;
+    
+   }
+
