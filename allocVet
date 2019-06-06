@@ -53,16 +53,57 @@ int main(){
     return 0;
 }
 
-2)
- */
+2)double **Alocar_matriz_real (int m, int n){
+ 
+  double **v;  
+  int   i;    
+ 
+  v = (double **) calloc (m, sizeof(double *));
+ 
+  for ( i = 0; i < m; i++ ) {
+      v[i] = (double*) calloc (n, sizeof(double));
+      }
+  return (v); 
+}
 
-int main(){
-      int *v,n ;
+int main(int m, int n, double **v)
+{
+      float valor;
+      int i,j,k,ordem;
       
-    printf("Digite Linha e coluna:");
-    v = (int*) malloc(n*sizeof(int)); 
-    
-    return 0;
-    
-   }
-
+      int num = ordem;
+      float mult,deter=1;
+      
+      printf("Entre com a ordem da matriz:");
+      scanf("%d",&ordem);
+      
+      for(i=0;i<ordem;i++){
+        for(j=0;j<ordem;j++){
+            
+              printf("Entre com o elemento (%d,%d) da matriz:",i+1,j+1);
+              scanf("%f",&v[i][j]);
+        }
+      }    
+      for(i=0;i<num;i++)
+      {
+        for(j=0;j<num;j++)
+        {
+              mult=v[j][i]/v[i][i];
+              for(k=0;k<fdr;k++)
+             {
+                if(i==j) break;
+                v[j][k]=v[j][k]-v[i][k]*mult;
+              }
+        }
+      }
+      for(i=0;i<num;i++)
+      {
+        deter=deter*v[i][i];
+      }
+      
+      printf("O valor da determinante: %.0f \n",deter);
+      
+      free (v); 
+      return 0;
+}
+ */
