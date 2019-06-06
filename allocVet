@@ -25,9 +25,11 @@ Ao final, exibir quantos desses valores são maiores do que 52;
 
  
 
-1)
+1)Alocação dinamicamente de um vetor.
+
 #include <stdio.h>
 #include <stdlib.h>
+
 
 
 int main(){
@@ -53,7 +55,12 @@ int main(){
     return 0;
 }
 
-2)double **Alocar_matriz_real (int m, int n){
+2)Alocação de matriz determinante.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+double **Alocar_matriz_real (int m, int n){
  
   double **v;  
   int   i;    
@@ -106,4 +113,75 @@ int main(int m, int n, double **v)
       free (v); 
       return 0;
 }
+3) - Pergunte ao usuário quantos cadastros ele deseja inserir;
+- Aloque dinamicamente uma struct com essa quantidade de cadastros contendo: nome; telefone; idade.
+- De acordo com o pedido do usuário, de a opção de editar cada uma das posições pré-alocadas;
+Ou seja, a posição já foi alocada previamente, o usuário só tem a opção de editar os dados nela contidos.
  */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct cadastros{
+    char nome[33];
+    int telefone;
+    int idade
+}
+
+typedef struct cadastro cad;
+
+void limparBuf(){
+    char c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+}
+    
+void printList(int qtd, cad *full) {
+    for (int i = 0; i < qtd; i++){
+        printf("(%d,%s) ",full[i].index,full[i].nome);
+    }
+    printf("\n");
+}
+int main(){
+    
+    int op = 1;
+    int cads = 0;
+    int posicao;
+    cad *cadastroTotal = NULL;
+    cad temp;
+
+    while(op!=0) {
+        printf("Digite a opcao desejada \n");
+        printf("1 - Inserir\n");
+        printf("2 - Listar\n");
+        printf("3 - Editar\n");
+        printf("0 - Sair \n");
+        scanf("%i", &opcao);
+        limparBuf();
+        switch (op) {
+            case 1:
+                ptr = (cad*) malloc(sizeof(cad));
+                ptr=temp;
+                
+                printf("Quantos cadastros deseja Inserir: \n");
+                scanf("%d",&cads);
+                
+                for(int i=0;i<cads;i++){
+                    printf("Digite o nome: \n");
+                    fgets(temp.nome, sizeof(temp.nome), stdin);
+                    temp.nome[strcspn(temp.nome,"\n")]='\0';
+                    
+                }
+                printList(qtd,cadastroTotal);
+                break;
+            case 2:
+                printList(qtd,cadastroTotal);
+                break;
+            case 3:
+                break;
+            case 0:
+                break;
+            default:
+                break;
+        }
+    }
+}
