@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    FILE *arq;
+    char a[77]="aluca e poderosa de mais iauu";
+    arq=fopen("arq.txt","w+");
+
+    char  lido[100],lido2[20];
+    int idade,idade2;
+
+
+    fputs("muiguelito 27\n",arq);
+    fputs("ramonzito 28\n",arq);
+
+    rewind(arq);
+    fscanf(arq,"%s %d",lido,&idade);
+    fscanf(arq,"%s %d",lido,&idade2);
+
+    printf("%s", lido);
+    printf("%s", lido2);
+    printf("%d", idade);
+    printf("%d", idade);
+    fclose(arq);
+    return 0;
+}
