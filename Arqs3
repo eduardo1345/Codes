@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    FILE *arq;
+    char chr;
+    arq = fopen("arq.txt", "r");
+    int line = 0,del=0;
+
+    chr=fgetc(arq);
+    while (feof(arq) == 0) {
+        chr = fgetc(arq);
+        if (chr == '\n') {
+            line = line + 1;
+        }
+    }
+
+printf("Que linha deletar");
+
+if(chr == del){
+    
+}
+    fclose(arq);
+    printf("%d",line);
+    return 0;
+}
