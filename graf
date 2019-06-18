@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+struct graph {
+    int V;
+    int A;
+    int **adj;
+};
+
+typedef struct graph *Graph;
+
+Graph GRAPHinit( int V) {
+    Graph G = malloc( sizeof *G);
+    G->V = V;
+    G->A = 0;
+    G->adj = MATRIXint( V, V, 0);
+    return G;
+}
+void arqBD() {
+    FILE *arq1 = fopen("entrada.txt", "r");
+
+    char lido[100];
+    char chr;
+    int line;
+
+
+    while (feof(arq1) == 0) {
+        chr = fgetc(arq1);
+        if (chr == 'M') {
+            //matriz de ajacencia
+        }
+        if(chr == 'L'){
+            //lista de ajacencia
+        }
+        if(chr == 'B'){
+            //BFS
+        }
+        if(chr == 'D'){
+            //DFS
+        }
+    }
+    if(line == 4){
+        //BFS
+    }
+    else{
+        //DFS
+    }
+}
+int main() {
+
+    arqBD();
+
+    return 0;
+}
+
